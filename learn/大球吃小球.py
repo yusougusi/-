@@ -91,6 +91,14 @@ while running:
     #取出容器的球， 如果每被吃就绘制，被吃就移除
     for ball in balls:
         if ball.alive:
+            ball.draw(screen)
+        else:
+            balls.remove(ball)
+    pygame.display.flip()
+    # 每隔50毫秒就改变球的位置再刷新窗口
+    pygame.time.delay(50)
+    for ball in balls:
+        if ball.alive:
             ball.move(screen)
             #检查球有没有吃其他球
             for other in balls:
