@@ -78,17 +78,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # 获取点击鼠标的位置
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button ==1:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             # 在点击鼠标的位置创建一个球(大小、速度和颜色随机)
-            x,y = event.pos
+            x, y = event.pos
             radius = randint(10, 100)
             sx, sy = randint(-10, 10), randint(-10, 10)
-            color =Color.random_color()
+            color = Color.random_color()
             ball = Ball(x, y, radius, sx, sy, color)
-            #将球添加到列表容器
+            # 将球添加到列表容器
             balls.append(ball)
-    screen.fill((255,255,255))
-    #取出容器的球， 如果每被吃就绘制，被吃就移除
+    screen.fill((255, 255, 255))
+    # 取出容器的球， 如果每被吃就绘制，被吃就移除
     for ball in balls:
         if ball.alive:
             ball.draw(screen)
@@ -100,6 +100,6 @@ while running:
     for ball in balls:
         if ball.alive:
             ball.move(screen)
-            #检查球有没有吃其他球
+            # 检查球有没有吃其他球
             for other in balls:
                 ball.eat(other)
