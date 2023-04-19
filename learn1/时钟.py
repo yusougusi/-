@@ -1,4 +1,5 @@
-from time import sleep
+from time import time, localtime, sleep
+
 
 
 class Time(object):
@@ -6,7 +7,10 @@ class Time(object):
         self._hour = hour
         self._minute = minute
         self._second = second
-
+    @classmethod
+    def now(cls):
+        ctime = localtime(time())
+        return cls(ctime.tm_hour, ctime.tm_min, ctime.tm_sec)
     def run(self):
         """走字"""
         self._second += 1
@@ -25,11 +29,12 @@ class Time(object):
 
 
 def main():
-    time = Time(23, 24, 23)
+    time = Time.now()
     while True:
         print(time.show())
         sleep(1)
         time.run()
+
 
 
 if __name__ == '__main__':
